@@ -19,3 +19,35 @@ class Profile(models.Model):
 
     def deleteProfile(self):
         self.delete()
+
+class Project(models.Model):
+    '''
+    Class instantiates diff Users' projects
+    '''
+    Title = models.CharField(max_length=30)
+    Landing = models.ImageField(upload_to = 'landings/')
+    Description = models.TextField()
+    User = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.Title
+
+    def saveproject(self):
+        self.save()
+
+    def deleteproject(self):
+        self.delete()
+
+class Rating(models.Model):
+    Design = models.IntegerField()
+    Usability  = models.IntegerField()
+    Content = models.IntegerField()
+    Average  = models.IntegerField()
+    RatedBy  = models.ForeignKey(Profile, on_delete= models.CASCADE)
+    project  = models.ForeignKey(Project, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.Design
+
+    def saverating(self):
+        self.save()
