@@ -32,10 +32,10 @@ class Project(models.Model):
     def __str__(self):
         return self.Title
 
-    def saveproject(self):
+    def saveProject(self):
         self.save()
 
-    def deleteproject(self):
+    def deleteProject(self):
         self.delete()
 
 class Rating(models.Model):
@@ -49,5 +49,5 @@ class Rating(models.Model):
     def __str__(self):
         return self.Design
 
-    def saverating(self):
+    def saveRating(self):
         self.save()
