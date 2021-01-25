@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .models import Profile, Project, Rating
 from .forms import projectaddition, profileupdate
-from .functions import averagingrates
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
@@ -18,14 +17,13 @@ from .serializers import projectSerializer,profileSerializer
 @login_required(login_url= 'login/')
 def home(request):
     project = Project.objects.get(id = 1)
-    projects = Project.objects.get.all()
+    projects = Project.objects.all()
     projects =  projects.reverse()
-    ratings = Rating.objects.filter(project=project)
-    rates = averagingrates(ratings)    
+    ratings = Rating.objects.filter(project=project)  
     project1 = Project.objects.get(id = 1)
     
 
-    return render(request, 'home.html', {"projects":projects,"rates":rates,"project1":project1})
+    return render(request, 'home.html', {"projects":projects,"project1":project1})
 
 
 def register(request):

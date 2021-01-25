@@ -1,0 +1,78 @@
+.projects{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    padding: 5%;
+}
+
+.project{
+    width: 80%;
+    margin-bottom: 15%;
+    
+}
+
+.landing{
+    width:100%;
+    height: 35vh;
+}
+
+.main{
+    
+    width: 100%;
+    height: 80vh;
+    background-image: url("../../../media/landings/pexels-panumas-nikhomkhai-1148820.jpg");    
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+.cover{
+    opacity: 0.7;
+    width: 100%;
+    height: 80vh;
+    background-color: black;
+}
+.mainratings{
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: 40%;
+}
+.averagerates{
+    display: flex;
+    flex-direction: row;
+}
+
+.rate{
+    border-right:2px solid white ;
+    width: 30%;
+    padding: 4%;
+    padding-right: 5%;
+}
+
+h2{
+    padding: 2%;
+}
+
+.owner{
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.btn{
+    margin: 5%;
+    padding: 1%;
+    width: 40%;
+}
+
+.profile{
+    width: 15%;
+    height: 6vh;
+    border-radius: 100%;
+}
+
+.by{
+    margin-right: 0;
+    padding-right: 0;
+}

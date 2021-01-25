@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %}
 
 {%block styles%}
     {{block.super}}
@@ -50,11 +51,11 @@
 
 <h2 class="text-center">Other projects</h2>
 <hr>
-<div class="projects">
-    {%for project in projects%}
+<div class="projects" style="font-family: 'Montserrat';">
+    {% for project in projects %}
     <div class="project card">
 
-        <img class="landing" src="{{project.Landing.url}}" alt="landing">
+        <img class="landing" src="{{project.Landing.url.url}}" alt="landing">
         <div class="owner">
             <p>{{project.Title}}</p>
             <div>
