@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+
+{%block styles%}
+    {{block.super}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Vibes&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+{%endblock%}
+    
+{%block content%}
+
+<div class="main" style="font-family:'Montserrat'; background-color: 353535; color:indigo; text-align: center;">
+    <div class="cover">
+        <h1>Project of the day: {{project1.Title}}</h1>
+
+        <div class="mainratings">
+            <h5>Ratings</h5>
+            <div class="averagerates">
+                <div class="rate">
+                    <p>
+                        Design:
+                    </p>
+                    <div>{{rates.0}}</div>
+                </div>
+                <div class="rate">
+                    <p>
+                        Usability:
+                    </p>
+                    <div>{{rates.1}}</div>
+                </div>
+
+                <div class="rate">
+                    <p>
+                        Content:
+                    </p>
+                    <div>{{rates.2}}</div>
+                </div>
+
+                <div class="rate">
+                    <p>
+                        Average:
+                    </p>
+                    <div>{{rates.3}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-center">Other projects</h2>
+<hr>
+<div class="projects">
+    {%for project in projects%}
+    <div class="project card">
+
+        <img class="landing" src="{{project.Landing.url}}" alt="landing">
+        <div class="owner">
+            <p>{{project.Title}}</p>
+            <div>
+                <p class="by">
+                    <small>Project by</small>
+                    <img class="profile" src="{{project.User.profilepic.url}}" alt="">
+                    <em>{{project.User.name}}</em>
+                </p>
+            </div>
+        </div>
+        <a class="bg-dark btn text-white" href="project/single/{{project.id}}">View Project</a>
+    </div>
+
+    {%endfor%}
+
+</div>
+
+{%endblock%}

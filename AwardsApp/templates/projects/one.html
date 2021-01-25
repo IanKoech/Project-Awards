@@ -1,0 +1,170 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="../../static/css/bootstrap.css">
+<link rel="stylesheet" href="../../static/css/main.css">
+<link rel="stylesheet" href="../../static/css/project.css">
+{%endblock%}
+<div class="projectPic">
+    <img class="projectpic" src="{{project.Landing.url}}" alt="">
+    <div class="cover">
+        <h1 class="text-center">{{project.Title}}</h1>
+        <p class="text-center name"><strong>Description: </strong>{{project.Description}}</p>
+
+        <p> <big> <em> Average ratings</em></big></p>
+        <div class="averagerates">
+            <div class="rat">
+                <p>
+                    Design:
+                </p>
+                <div class="text-center">{{rates.0}}</div>
+            </div>
+            <div class="rat">
+                <p>
+                    Usability:
+                </p>
+                <div class="text-center">{{rates.1}}</div>
+            </div>
+
+            <div class="rat">
+                <p>
+                    Content:
+                </p>
+                <div class="text-center">{{rates.2}}</div>
+            </div>
+
+            <div class="rat">
+                <p>
+                    Average:
+                </p>
+                <div class="text-center">{{rates.3}}</div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<form action="" class="container ratingform" method="POST">
+    {%csrf_token%}
+    <h1>Rate</h1>
+    <div class="form">
+
+        <div class="input">
+            <label for="creativity">Creativity:
+                <input type="range" min="0" max="10" name="creativity" class="slider" id="creativity">
+            </label>
+            <div class="selector">
+                <div class="selectvalue" id="creativityvalue">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="input">
+            <label for="Design">Design:
+                <input type="range" min="0" max="10" name="design" class="slider" id="design">
+            </label>
+            <div class="selector">
+                <div class="selectvalue" id="designvalue">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="input">
+            <label for="functionality">Functionality:
+                <input type="range" min="0" max="10" name="functionality" class="slider" id="functionality">
+            </label>
+            <div class="selector">
+                <div class="selectvalue" id="functionalityvalue">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-dark" value="submit ratings">
+
+</form>
+
+
+
+<h3>Ratings</h3>
+<div class="ratings">
+
+    {%for rating in ratings%}
+    <div class="rating card bg-light">
+        <p><small>As rated by </small> <em>{{rating.Rater.name}}</em></p>
+        <div class="rateclass">
+            <p>
+                Design:
+            </p>
+            <span class="rate">{{rating.Design}}</span>
+        </div>
+
+        <div class="rateclass">
+            <p>
+                Usability:
+
+            </p>
+            <span class="rate">{{rating.Usability}}</span>
+        </div>
+
+        <div class="rateclass">
+            <p>
+                Content:
+            </p>
+            <span class="rate">{{rating.Content}}</span>
+        </div>
+
+        <div class="rateclass">
+            <p>
+                Average:
+
+            </p>
+            <span class="rate">{{rating.Average}}</span>
+        </div>
+
+    </div>
+    {%endfor%}
+
+    {%block scripts%}
+    <script>
+
+        var creativity = document.getElementById("creativity");
+        var creativityvalue = document.getElementById("creativityvalue");
+        creativityvalue.innerHTML = creativity.value
+
+        creativity.oninput = function () {
+            creativityvalue.innerHTML = this.value
+        }
+
+        var design = document.getElementById("design");
+        var designvalue = document.getElementById("designvalue");
+        designvalue.innerHTML = design.value
+        design.oninput = function () {
+            designvalue.innerHTML = this.value
+        }
+
+        var functionality = document.getElementById("functionality");
+        var functionalityvalue = document.getElementById("functionalityvalue");
+        functionalityvalue.innerHTML = functionality.value
+        functionality.oninput = function () {
+            functionalityvalue.innerHTML = this.value
+        }
+
+
+
+    </script>
+
+
+    {%endblock%}
+
+
+    {%endblock%}
