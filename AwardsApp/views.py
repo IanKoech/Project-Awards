@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from django.http  import HttpResponse, Http404
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .models import Profile, Project, Rating
 from .forms import projectaddition, profileupdate
+from .functions import averagingrates
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
@@ -12,18 +12,19 @@ from rest_framework.response import Response
 from .serializers import projectSerializer,profileSerializer
 
 
-# Create your views here
+# Create your views here.
 
 @login_required(login_url= 'login/')
 def home(request):
     project = Project.objects.get(id = 1)
     projects = Project.objects.all()
     projects =  projects.reverse()
-    ratings = Rating.objects.filter(project=project)  
+    ratings = Rating.objects.filter(project=project)
+    rates = averagingrates(ratings)    
     project1 = Project.objects.get(id = 1)
     
 
-    return render(request, 'home.html', {"projects":projects,"project1":project1})
+    return render(request, 'home.html', {"projects":projects,"rates":rates,"project1":project1})
 
 
 def register(request):
@@ -127,7 +128,7 @@ def addproject(request):
         
     return render(request, "projects/addproject.html", {"form":form})
 
-@login_required(login_url= '/accounts/login/')
+@login_required(login_url= 'login/')
 def showproject(request):
     projects = Project.objects.all()
 
@@ -135,7 +136,7 @@ def showproject(request):
 
 
 
-@login_required(login_url= '/accounts/login/')
+@login_required(login_url= 'login/')
 def oneproject(request, id):
 
     project = Project.objects.get(id = id)
@@ -209,3 +210,7 @@ def searchproject(request):
         return render(request, 'search.html', {"projects":project})
 
     return render(request, 'search.html')
+
+#login and register styling
+#Rest api
+#Search

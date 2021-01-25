@@ -1,17 +1,12 @@
 {%extends 'base.html'%}
-{% load bootstrap3 %}
 
+{%block content%}
 {%block styles%}
-    {{block.super}}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Vibes&display=swap" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+{{block.super}}
+<link rel="stylesheet" href="../static/css/home.css">
 
 {%endblock%}
-    
-{%block content%}
-
-<div class="main" style="font-family:'Montserrat'; background-color: 353535; color:indigo; text-align: center;">
+<div class="main">
     <div class="cover">
         <h1>Project of the day: {{project1.Title}}</h1>
 
@@ -51,11 +46,11 @@
 
 <h2 class="text-center">Other projects</h2>
 <hr>
-<div class="projects" style="font-family: 'Montserrat';">
-    {% for project in projects %}
+<div class="projects">
+    {%for project in projects%}
     <div class="project card">
 
-        <img class="landing" src="{{project.Landing.url.url}}" alt="landing">
+        <img class="landing" src="{{project.Landing.url}}" alt="landing">
         <div class="owner">
             <p>{{project.Title}}</p>
             <div>

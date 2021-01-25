@@ -1,10 +1,10 @@
 from django.conf.urls import url
 from . import views
-from django.conf import settings
 from django.conf.urls.static import static
+from django.conf import settings
 
-urlpatterns=[
-    url(r'', views.home, name='home'),
+urlpatterns = [
+    url(r'^$', views.home, name='home'),
     url(r'register/$', views.register, name='register'),
     url(r'login/$', views.loginpage, name='login'),
     url(r'profile/update/$', views.updateprofile, name='updateprofile'),
@@ -18,6 +18,8 @@ urlpatterns=[
     url(r'profile/api/(\d+)$', views.singleprofilesapi, name='singleprofilesapi'),
     url(r'endpoints/$', views.allendpoints, name='endpoints'),
     url(r'searchproject/$', views.searchproject, name='searchproject'),
+
+    
 ]
 
 if settings.DEBUG:
