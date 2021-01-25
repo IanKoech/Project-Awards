@@ -7,6 +7,10 @@ from .models import Profile, Project, Rating
 from .forms import projectaddition, profileupdate
 from .functions import averagingrates
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import projectSerializer,profileSerializer
 
 
 # Create your views here
@@ -160,3 +164,50 @@ def oneproject(request, id):
      
 
     return render(request, "projects/one.html", {"project":project,"rates":rates, "ratings":ratings})
+
+@api_view(['GET'])
+def projectsapi(request):
+
+    projects = Project.objects.all()
+    serializer = projectSerializer(projects, many = True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def singleprojectsapi(request, id):
+
+    projects = Project.objects.get(id = id)
+    serializer = projectSerializer(projects, many = False)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def profilesapi(request):
+
+    profiles = Profile.objects.all()
+    serializer = profileSerializer(profiles, many = True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def singleprofilesapi(request, id):
+
+    profiles = Profile.objects.get(id = id)
+    serializer = profileSerializer(profiles, many = False)
+
+    return Response(serializer.data)
+
+def allendpoints(request):
+
+    return render(request, 'endpoints.html')
+
+
+def searchproject(request):
+    if 'project' in request.GET and request.GET["project"]:
+        searchedproject = request.GET.get("project")
+        project = Project.objects.filter(Title = searchedproject)
+        print(project)
+    
+        return render(request, 'search.html', {"projects":project})
+
+    return render(request, 'search.html')
