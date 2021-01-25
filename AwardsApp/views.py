@@ -14,7 +14,7 @@ from .serializers import projectSerializer,profileSerializer
 
 # Create your views here.
 
-@login_required(login_url= 'login/')
+@login_required(login_url= 'accounts/login/')
 def home(request):
     project = Project.objects.get(id = 1)
     projects = Project.objects.all()
@@ -76,17 +76,17 @@ def logoutpage(request):
 
 
 
-@login_required(login_url= 'login/')
+@login_required(login_url= 'accounts/login/')
 def updateprofile(request):
     form = profileupdate()
     user = request.user
     if request.method == "POST":
         form = profileupdate(request.POST, request.FILES)
-        profile = Profile.objects.get(name=user.username)
+        profile = Profile.objects.get(name=user.name)
 
         print(form.is_valid())
         if form.is_valid():
-            profile = Profile.objects.get(name=user.username)
+            profile = Profile.objects.get(name=user.name)
             profilepic = form.cleaned_data['profilepic']
             profile.profilepic = profilepic        
             profile.bio = request.POST.get("bio")
@@ -99,7 +99,7 @@ def updateprofile(request):
     
     return render(request,'profile/update.html', {"form":form})
 
-@login_required(login_url= 'login/')
+@login_required(login_url= 'accounts/login/')
 def profilepage(request):
 
     user = request.user
@@ -109,7 +109,7 @@ def profilepage(request):
     return render (request, 'profile/home.html', {"profile":profile, "projects":projects})
 
 
-@login_required(login_url= 'login/')
+@login_required(login_url= 'accounts/login/')
 def addproject(request):
     form = projectaddition()
     if request.method == "POST":
@@ -119,7 +119,7 @@ def addproject(request):
         if form.is_valid():
             
             user = request.user
-            profile = Profile.objects.get(name=user.username)
+            profile = Profile.objects.get(name=user.name)
             new_project = form.save(commit=False)
             new_project.User = profile
             new_project.save()
@@ -128,7 +128,7 @@ def addproject(request):
         
     return render(request, "projects/addproject.html", {"form":form})
 
-@login_required(login_url= 'login/')
+@login_required(login_url= 'accounts/login/')
 def showproject(request):
     projects = Project.objects.all()
 
@@ -136,7 +136,7 @@ def showproject(request):
 
 
 
-@login_required(login_url= 'login/')
+@login_required(login_url= 'accounts/login/')
 def oneproject(request, id):
 
     project = Project.objects.get(id = id)
@@ -210,7 +210,3 @@ def searchproject(request):
         return render(request, 'search.html', {"projects":project})
 
     return render(request, 'search.html')
-
-#login and register styling
-#Rest api
-#Search

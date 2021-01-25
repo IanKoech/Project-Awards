@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Awards.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'awards',
         'USER': 'ian',
     'PASSWORD':'iankoech',
