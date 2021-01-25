@@ -20,11 +20,11 @@ def home(request):
     projects = Project.objects.all()
     projects =  projects.reverse()
     ratings = Rating.objects.filter(project=project)
-    rates = averagingrates(ratings)    
+    #rates = averagingrates(ratings)    
     project1 = Project.objects.get(id = 1)
     
 
-    return render(request, 'home.html', {"projects":projects,"rates":rates,"project1":project1})
+    return render(request, 'home.html', {"projects":projects,"project1":project1})
 
 
 def register(request):
@@ -156,13 +156,13 @@ def oneproject(request, id):
     
     try:
         ratings = Rating.objects.filter(project=project)
-        rates =averagingrates(ratings) 
+        #rates =averagingrates(ratings) 
     except:
         rates = ['No ratings','No ratings','No ratings','No ratings']
 
      
 
-    return render(request, "projects/one.html", {"project":project,"rates":rates, "ratings":ratings})
+    return render(request, "projects/one.html", {"project":project ,"ratings":ratings})
 
 @api_view(['GET'])
 def projectsapi(request):

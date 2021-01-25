@@ -1,50 +1,21 @@
 {%extends 'base.html'%}
-
-{%block content%}
 {%block styles%}
 {{block.super}}
 <link rel="stylesheet" href="../static/css/home.css">
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 {%endblock%}
-<div class="main">
-    <div class="cover">
-        <h1>Project of the day: {{project1.Title}}</h1>
 
-        <div class="mainratings">
-            <h5>Ratings</h5>
-            <div class="averagerates">
-                <div class="rate">
-                    <p>
-                        Design:
-                    </p>
-                    <div>{{rates.0}}</div>
-                </div>
-                <div class="rate">
-                    <p>
-                        Usability:
-                    </p>
-                    <div>{{rates.1}}</div>
-                </div>
-
-                <div class="rate">
-                    <p>
-                        Content:
-                    </p>
-                    <div>{{rates.2}}</div>
-                </div>
-
-                <div class="rate">
-                    <p>
-                        Average:
-                    </p>
-                    <div>{{rates.3}}</div>
-                </div>
-            </div>
-        </div>
+{% block content %}
+<div class="main" style="font-family: 'Montserrat'; display: ruby-base-container; background-color: 353535;">
+    <div class="jumbotron" style="background-color: 353535; height: 48px; width: auto;">
+        <h1 style="text-align: center; color: indigo;" >Project Awards</h1>  
     </div>
 </div>
-
-<h2 class="text-center">Other projects</h2>
+<div>
+    <marquee style="font-family: 'Montserrat'; scroll-behavior: smooth; shape-rendering: geometricPrecision; font-size: larger;">This web application allows the user to upload projects they have worked on before and also rate those of other users</marquee>
+</div>
+<h2 class="text-center" style="font-family: 'Montserrat'; background-color: #353535; font-size: larger; font-weight: 900; color: ivory;">Samples of my projects</h2>
 <hr>
 <div class="projects">
     {%for project in projects%}
