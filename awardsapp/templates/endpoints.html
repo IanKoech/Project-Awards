@@ -1,7 +1,11 @@
 {%extends 'base.html'%}
-
+{% block styles%}
+{{block.super}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+{% endblock %}
 {%block content%}
-    <div class="container">
+    <div class="container" style="font-family:'Montserrat'; text-align: center; background-color: #353535;">
         <div class="endpoints">
 
             <div class="endpoint">

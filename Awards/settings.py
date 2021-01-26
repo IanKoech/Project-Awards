@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'awardsapp',
     'bootstrap3',
+    'django_registration',
     'rest_framework',
     'rest_framework.authtoken'
 ]

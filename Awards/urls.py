@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^', include('awardsapp.urls')),
     url('accounts/', include('django_registration.backends.one_step.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
-    url(r'^logout/$', views.logout_then_login, name='logout'),
+    url(r'logout/$', views.logout_then_login, name='logout'),
 ]

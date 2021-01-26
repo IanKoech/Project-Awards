@@ -50,7 +50,7 @@
 </div>
 
 
-<form action="" class="container ratingform" method="POST">
+<form action="" class="container ratingform" method="POST" style="font-family: 'Montserrat'; text-align: center; text-transform: capitalize; background-color: #353535; color: ivory; padding-left: 25px; margin-left: 2rem;">
     {%csrf_token%}
     <h1>Rate</h1>
     <div class="form">
@@ -97,8 +97,8 @@
 
 
 
-<h3>Ratings</h3>
-<div class="ratings">
+<h3 style="font-family: 'Montserrat';">Ratings</h3>
+<div class="ratings" style="font-family: 'Montserrat'; text-align: center; text-transform: capitalize; background-color: #353535;">
 
     {%for rating in ratings%}
     <div class="rating card bg-light">
