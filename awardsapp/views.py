@@ -82,11 +82,11 @@ def updateprofile(request):
     user = request.user
     if request.method == "POST":
         form = profileupdate(request.POST, request.FILES)
-        profile = Profile.objects.get(name=user.name)
+        profile = Profile.objects.get(name=user.username)
 
         print(form.is_valid())
         if form.is_valid():
-            profile = Profile.objects.get(name=user.name)
+            profile = Profile.objects.get(name=user.username)
             profilepic = form.cleaned_data['profilepic']
             profile.profilepic = profilepic        
             profile.bio = request.POST.get("bio")
@@ -119,7 +119,7 @@ def addproject(request):
         if form.is_valid():
             
             user = request.user
-            profile = Profile.objects.get(name=user.name)
+            profile = Profile.objects.get(name=user.username)
             new_project = form.save(commit=False)
             new_project.User = profile
             new_project.save()
@@ -156,13 +156,13 @@ def oneproject(request, id):
     
     try:
         ratings = Rating.objects.filter(project=project)
-        #rates =averagingrates(ratings) 
+        rates =averagingrates(ratings) 
     except:
         rates = ['No ratings','No ratings','No ratings','No ratings']
 
      
 
-    return render(request, "projects/one.html", {"project":project ,"ratings":ratings})
+    return render(request, "projects/one.html", {"project":project,"rates":rates, "ratings":ratings})
 
 @api_view(['GET'])
 def projectsapi(request):

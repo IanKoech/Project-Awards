@@ -9,7 +9,7 @@ def averagingrates(ratings):
         totaldesign += rating.Design 
         totalfunctionality += rating.Usability
 
-    averagecreativity = totalcreativity/(ratings.count()+1)
+    averagecreativity = totalcreativity/(ratings)
     averagelist.append(averagecreativity)
     averagedesign = totaldesign/ratings.count()
     averagelist.append(averagedesign)
