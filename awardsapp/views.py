@@ -99,7 +99,7 @@ def profilepage(request):
 
     user = request.user
     profile = Profile.objects.get(name= 'Koech')
-    projects = Project.objects.filter(User=profile)
+    #projects = Project.objects.filter(User=profile)
     print(profile)
     return render (request, 'profile/home.html', {"profile":profile, "projects":projects})
 
