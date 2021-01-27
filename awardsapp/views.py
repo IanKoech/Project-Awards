@@ -29,6 +29,7 @@ def home(request):
 
 def register(request):
 
+
     form = UserCreationForm()
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -45,6 +46,28 @@ def register(request):
             return redirect('login')
 
     return render(request, 'django_registration/registration_form.html',{"form":form})
+
+    # def loginpage(request):
+
+    # if request.method == "POST":
+    #     username = request.POST.get("username")
+    #     password = request.POST.get("password")
+
+    #     user = authenticate(request, username = username, password = password)
+
+    #     if user is not None:
+    #         login(request, user)
+
+    #         return redirect('home')
+
+    #     else:
+            
+    #         message = 'The username or password you entered is incorrect'
+    #         username = request.POST.get("username")
+    #         return render(request, 'django_registration/registration/login.htm', {"message": message,"username":username})
+
+
+    # return render(request, 'django_registration/registration/login.html')
 
 
 def loginpage(request):
@@ -64,10 +87,10 @@ def loginpage(request):
             
             message = 'The username or password you entered is incorrect'
             username = request.POST.get("username")
-            return render(request, 'django_registration/registration/login.htm', {"message": message,"username":username})
+            return render(request, 'register/login.html', {"message": message,"username":username})
 
 
-    return render(request, 'django_registration/registration/login.html')
+    return render(request, 'register/login.html')
 
 
 
