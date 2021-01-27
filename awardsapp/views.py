@@ -42,7 +42,7 @@ def register(request):
             new_profile = Profile(name=user, profilepic = profilepic)
             new_profile.saveprofile()
     
-            return redirect('home')
+            return redirect('login/')
 
     return render(request, 'django_registration/registration_form.html',{"form":form})
 
