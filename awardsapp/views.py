@@ -64,10 +64,10 @@ def loginpage(request):
             
             message = 'The username or password you entered is incorrect'
             username = request.POST.get("username")
-            return render(request, 'register/login.html', {"message": message,"username":username})
+            return render(request, 'registration/login.html', {"message": message,"username":username})
 
 
-    return render(request, 'register/login.html')
+    return render(request, 'registration/login.html')
 
 
 
