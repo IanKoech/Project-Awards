@@ -1,49 +1,57 @@
+{%block styles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/forms.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
-{%extends "django_registration/base.html"%}
-{% load   bootstrap3 %}
-{% load static %}
-{% block styles%}
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-  {% bootstrap_css %}
 
-{% endblock%}
-{% block content %}
-<div class="container" style="font-family:'Montserrat'; font-size: large; color: indigo; background-color: 353535; display: flexbox;">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      {% if form.errors %}
-        <p> Some Information Might be Incorrect </p>
-      {% endif %}
-      <div class="panel panel-default">
+{%endblock%}
 
-        <div >
-          <h3 class="text-center " style="font-family: 'Montserrat';">Sign Up for Instagram</h3>
-        </div>
-        <div class="panel-body">
+<div class="register">
 
-          <form  action="/accounts/register/" method="post" style="font-family: 'Montserrat';">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-           
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
-            </div>
+    <form action="" , class="signup" method="POST">
 
-            <input type="hidden" name="next" value="{{next}}">
+        {% csrf_token %}
+        
+        <h2>Sign Up</h2>
 
-          </form>
-
+        <p>
+        <div>
+            {{form.username.label}}:
         </div>
 
-      </div>
+        <div class="input">
+            {{form.username}}
+        </div>
 
-    </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
-  </div>
+        </p>
+        <p>
+        <div>
+            {{form.password1.label}}:
+        </div>
+        <div class="input">
+            {{form.password1}}
+        </div>
+
+        </p>
+
+        <p>
+        <div>
+            {{form.password2.label}}:
+        </div>
+        <div class="input">
+            {{form.password2}}
+        </div>
+
+        </p>
+
+
+        <input class="btn btn-dark" type="submit" value="sign up">
+   
+        <p>You already have an account? <a href="{% url 'login' %}"> Sign in.</a></p>
+
+    </form>
+
 </div>
 
-{% endblock %}
+

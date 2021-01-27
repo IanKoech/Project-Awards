@@ -22,7 +22,7 @@ class Profile(models.Model):
 
 class Project(models.Model):
     Title = models.CharField(max_length=30)
-    Landing = models.ImageField(upload_to = 'landings/')
+    Landing = models.ImageField(upload_to = 'landigs/')
     Description = models.TextField()
     User = models.ForeignKey(Profile, on_delete=models.CASCADE)
 

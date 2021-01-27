@@ -13,27 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-# from django.conf import settings
-# from django.conf.urls import url, include
-# from django.contrib import admin
-# from django.contrib.auth import views as auth_views
-
-
-# urlpatterns = [
-#     url(r'^admin/', admin.site.urls),
-#     url(r'^', include('awardsapp.urls')),
-#     url('accounts/', include('django_registration.backends.one_step.urls')),
-#     url('accounts/', include('django.contrib.auth.urls')),
-#     url(r'^logout/$', auth_views.LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL), name='logout'),
-# ]
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth import views
+from django.urls import path
+from django.contrib.auth import views as auth_views
+from django_registration.backends.one_step.views import RegistrationView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('awardsapp.urls')),
-    url(r'^logout/$', views.logout_then_login, name='logout'),
-    url('accounts/', include('django_registration.backends.one_step.urls')),
-    url('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/',
+        RegistrationView.as_view(success_url='/'),
+        name='django_registration_register'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

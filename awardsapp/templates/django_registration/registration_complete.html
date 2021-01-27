@@ -1,1 +1,14 @@
-Hello {{name}}, Thank you for signing up
+{% extends 'django_registration/base.html' %}
+{% block styles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class='text-center'>
+    <p class='jumbotron' style="font-family: 'Montserrat'; text-align: center; display:-ms-flexbox; background-color: #353535; color: beige;">
+        Hello, thanks for signing up
+    </p>
+</div>
+{%  endblock %}
