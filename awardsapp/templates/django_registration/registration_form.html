@@ -8,12 +8,9 @@
 
 {%endblock%}
 
-<div class="register">
+<div class="register" style="font-family: 'Montserrat'; text-align: center; display: flex;">
 
-    <form action="{% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- {% bootstrap_javascript %}
-{% endblock %}" , class="signup" method="POST">
+    <form action="/accounts/register/" , class="signup" method="POST">
 
         {% csrf_token %}
         <h2>Sign Up</h2>
