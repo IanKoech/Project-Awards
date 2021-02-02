@@ -1,3 +1,4 @@
+{% load bootstrap3 %}
 {%block styles%}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/forms.css">
@@ -8,7 +9,7 @@
 {%endblock%}
 
 <div class="login" style="font-family: 'Montserrat'; text-align:center; background-color: bisque;">
-    <form action="" method="POST" style="color: beige;">
+    <form action="/register/login/" method="POST" style="color: beige;">
         {%csrf_token%}
         <h2>Log In</h2>
         
@@ -20,3 +21,4 @@
         <p>If you don't have an account you can create one <a href="{%url 'register' %}">here.</a></p>
     </form>
 </div>
+
